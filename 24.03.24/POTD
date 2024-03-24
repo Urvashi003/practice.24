@@ -1,0 +1,40 @@
+//leetcode potd
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+       sort(nums.begin(), nums.end());
+        int res = -1;
+        for(int i=1; i< nums.size(); i++){
+            if(nums[i] == nums[i-1]){
+                res = nums[i];
+                break;
+            }
+        }
+        return res;
+    }       
+};
+
+//gfg potd
+class Solution{
+public:
+
+void solve(stack<int>& st, int x) {
+    //base case
+    if(st.empty()) {
+        st.push(x);
+        return ;
+    }
+    
+    int num = st.top();
+    st.pop();
+    
+    //recursive call
+    solve(st, x);
+    
+    st.push(num);
+}
+    stack<int> insertAtBottom(stack<int> st,int x){
+        solve(st,x);
+        return st;
+    }
+};
